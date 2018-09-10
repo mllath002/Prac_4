@@ -45,6 +45,10 @@ mcp = Adafruit_MCP3008.MCP3008(clk=SPICLK, cs=SPICS, mosi=SPIMOSI, miso=SPIMISO)
 # freq_button_pressed = True
 # stop_button_pressed = True
 
+freq_1 = 1/0.5 
+freq_2 = 1/1.0 
+freq_3 = 1/2.0
+
 #global variable ?????
 values = [0]*8
 
@@ -53,7 +57,8 @@ for i in range(8):
 values[i] = mcp.read_adc(i)
  # delay for a half second
  time.sleep(0.5)
-print values
+print values
+
 
 # Open SPI bus
 spi = spidev.SpiDev() # create spi object
@@ -74,7 +79,8 @@ while True:
 # Wait before repeating loop
  time.sleep(delay)
 except KeyboardInterrupt:
- spi.close()
+ spi.close()
+
 
 
 # FUNCTION DEFINITION: threaded callback
@@ -102,7 +108,7 @@ def ConvertVolts(data,places): # places: number of decimal places needed
  return volts
 
 # 'bouncetime=200' includes the bounce control
-# ‘bouncetime=200’ sets 200 milliseconds during which second button press will
+# â€˜bouncetime=200â€™ sets 200 milliseconds during which second button press will
 #  be ignored.
 # to remove: GPIO.remove_event_detect(port_number)
 
@@ -112,4 +118,5 @@ try:
 GPIO.wait_for_edge(switch_3, GPIO.RISING)
 except KeyboardInterrupt:
 GPIO.cleanup() # clean up GPIO on CTRL+C exit
-GPIO.cleanup() # clean up GPIO on normal exit
+GPIO.cleanup() # clean up GPIO on normal exit
+
