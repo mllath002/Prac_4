@@ -110,15 +110,21 @@ def ConvertVolts(data,places): # places: number of decimal places needed
  volts = round(volts,2) #round of to two decimal places
  return volts
 
-# 'bouncetime=200' includes the bounce control
-# ‘bouncetime=200’ sets 200 milliseconds during which second button press will be ignored.
-# to remove: GPIO.remove_event_detect(port_number)
-
 # FUNCTION DEFINITION: convert data to temperature 
 def ConvertTemp(data): 
  temp = ((data*330/float(1023))-50
  temp = round(temp,0) #round to zero decimal places 
  return temp #return temp in degrees 
+
+# FUNCTION DEFINITION: convert data to percentage
+def ConvertPercent(data): 
+         # ????
+              
+# 'bouncetime=200' includes the bounce control
+# ‘bouncetime=200’ sets 200 milliseconds during which second button press will be ignored.
+# to remove: GPIO.remove_event_detect(port_number)
+
+
 
 # try:
 # GPIO.wait_for_edge(switch_3, GPIO.RISING)
