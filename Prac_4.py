@@ -18,6 +18,7 @@ SPICS = 8
 reset_button = 17 # switch resets timer and cleans console 
 freq_button = 26 # switch to change frequency
 stop_button = 23 # switch off or on monitoring. Display when off.
+disp_button = 6 # display the first five readings
 
 # sensors channel 0-7 definition MCP3008
 light_channel = 0
@@ -30,9 +31,10 @@ GPIO.setup(SPICLK, GPIO.OUT)
 GPIO.setup(SPICS, GPIO.OUT)
 #set inputs
 GPIO.setup(SPIMISO, GPIO.IN)
-GPIO.setup(switch_1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(switch_2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(switch_3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(reset_button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(freq_button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(stop_button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(disp_button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # when falling egde detected on the pin numbers
 # the following functions will run
