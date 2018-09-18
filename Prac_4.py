@@ -81,13 +81,44 @@ except KeyboardInterrupt:
 # FUNCTION DEFINITION: threaded callback
 def callback_reset(channel):
 # reset timer and clean console
+ unused = os.system("clear') 
+ global total 
+ total = 0 
+ print("Time\t\tTimer\tPot\tTemp\tLight")
+ 
+   
 def callback_freq(channel):
 # change frequency of monitoring
 # loop between 500ms, 1s, 2s 
+ global delay
+  if(delay==0.5):
+    delay = 1
+  elif(delay==1):
+    delay = 2
+  else: 
+    delay = 0.5
+
 def callback_stop(channel):
 # stop or start monitoring sensors
 # timer not affected but this functionality
 # then display first five readings when stop switch pressed 
+   global stop 
+   global count 
+   if(stop==False):
+     stop = True
+     count = 0 
+   else: 
+     stop = False
+
+ def callback_display(channel): 
+ # display first five readings after stop button pressed 
+   global display
+   print("*****************DISPLAY********************")
+   print("Time\t\tTimer\tPot\tTemp\tLight")
+   for i in range(5): 
+      print(display[i])
+   print("********************************************")                 
+                    
 
 
 # FUNCTION DEFINITION: get data from channels 
