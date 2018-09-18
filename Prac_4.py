@@ -13,7 +13,6 @@ GPIO.setmode(GPIO.BCM) #pin numbering BCM
 SPICLK = 11
 SPIMISO = 9
 SPIMOSI = 10
-SPICS = 8
 
 reset_button = 17 # switch resets timer and cleans console 
 freq_button = 26 # switch to change frequency
